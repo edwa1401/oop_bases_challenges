@@ -10,17 +10,17 @@
 import decimal
 
 class BankAccount:
-    def __init__(self, owner_full_name: str, balance: str) -> None:
+    def __init__(self, owner_full_name: str, balance: decimal.Decimal) -> None:
         self.owner_full_name = owner_full_name
-        self.balance = decimal.Decimal(balance).quantize(decimal.Decimal('1.00'))
+        self.balance = balance
 
-    def increase_balance(self, income: str) -> None:
-        self.balance += decimal.Decimal(income).quantize(decimal.Decimal('1.00'))
+    def increase_balance(self, income: decimal.Decimal) -> None:
+        self.balance += income
     
-    def decrese_balance(self, expense: str) -> None:
-        self.balance -= decimal.Decimal(expense).quantize(decimal.Decimal('1.00'))
+    def decrese_balance(self, expense: decimal.Decimal) -> None:
+        self.balance -= expense
         if self.balance < 0:
-            self.balance += decimal.Decimal(expense).quantize(decimal.Decimal('1.00'))
+            self.balance += expense
             raise ValueError(f'operation cancelled due to insufficient account balance {self.balance}')
 
 
