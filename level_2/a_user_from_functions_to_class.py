@@ -27,10 +27,6 @@ class User:
     def short_description(self) -> str:  
         return f'User with id {self.user_id} has {self.username} username and {self.name} name'
     
-    def generate_short_description(self) -> str:
-        capitalized_username = self.get_username_capitalized()    
-        return f'User with id {self.user_id} has {capitalized_username} username and {self.name} name'
-    
 if __name__ == '__main__':
     kolya = User(username='don', user_id=12, name='Kolya')
     kolya.get_username_capitalized()
