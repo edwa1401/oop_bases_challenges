@@ -25,3 +25,4 @@ if __name__ == '__main__':
 
     banned_user = User(name='David', surname='Porter', age=50)
     print('{name} is banned? {status}'.format(name=banned_user.name, status=banned_user.should_be_banned()))
+

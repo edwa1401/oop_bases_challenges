@@ -10,6 +10,7 @@
 import decimal
 
 class BankAccount:
+
     def __init__(self, owner_full_name: str, balance: decimal.Decimal) -> None:
         self.owner_full_name = owner_full_name
         self.balance = balance
