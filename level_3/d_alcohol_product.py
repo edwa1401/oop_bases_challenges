@@ -36,9 +36,18 @@ class AlcoholProduct(Product):
 if __name__ == '__main__':
     cucumber = Product(title='огурцы', price=100.01, stock_quantity=1.050)
     print(cucumber.get_discounted_price(10))
-    print('{title} в наличии? - {status}'.format(title=cucumber.title, status=cucumber.is_available()))
+    print('{title} в наличии? - {status}'.format(
+        title=cucumber.title,
+        status=cucumber.is_available())
+        )
 
     vodka = AlcoholProduct(title='Столичная', price=1000.00, stock_quantity=10)
     print(vodka.get_discounted_price(5))
-    print('{title} сейчас в наличии? - {status}'.format(title=vodka.title, status=vodka.is_available(current_hour=datetime.now().hour)))
-    print('{title} сейчас в наличии? - {status}'.format(title=vodka.title, status=vodka.is_available(current_hour=6)))
+    print('{title} сейчас в наличии? - {status}'.format(
+        title=vodka.title,
+        status=vodka.is_available(current_hour=datetime.now().hour))
+        )
+    print('{title} сейчас в наличии? - {status}'.format(
+        title=vodka.title,
+        status=vodka.is_available(current_hour=6))
+        )
