@@ -20,7 +20,7 @@ class User:
         self.user_id = user_id
         self.name = name
 
-    def get_username_capitalized(self) -> None:
+    def get_username_capitalized(self) -> str:
         return self.username.capitalize()
     
     @property
@@ -29,8 +29,6 @@ class User:
     
 if __name__ == '__main__':
     kolya = User(username='don', user_id=12, name='Kolya')
-    kolya.get_username_capitalized()
+    print(kolya.get_username_capitalized())
     print(kolya.short_description)
-    
-    short_description = kolya.generate_short_description()
-    print(short_description)
+

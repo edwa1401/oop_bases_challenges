@@ -21,8 +21,14 @@ class User:
     
 if __name__ == '__main__':
     not_banned_user = User(name='Piter', surname='Pen', age=100)
-    print('{name} is banned? {status}'.format(name=not_banned_user.name, status=not_banned_user.should_be_banned()))
+    print('{name} is banned? {status}'.format(
+        name=not_banned_user.name,
+        status=not_banned_user.should_be_banned())
+        )
 
     banned_user = User(name='David', surname='Porter', age=50)
-    print('{name} is banned? {status}'.format(name=banned_user.name, status=banned_user.should_be_banned()))
+    print('{name} is banned? {status}'.format(
+        name=banned_user.name,
+        status=banned_user.should_be_banned())
+        )
 
