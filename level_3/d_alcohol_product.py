@@ -27,12 +27,11 @@ class Product:
 
 class AlcoholProduct(Product):
     def is_available(self, current_hour: int) -> bool:
-        if  current_hour > 5 and current_hour < 23:
-            return super().is_available()
-        else:
+        if  current_hour < 5 and current_hour > 23:
             return False
-    
+        return super().is_available()
 
+    
 if __name__ == '__main__':
     cucumber = Product(title='огурцы', price=100.01, stock_quantity=1.050)
     print(cucumber.get_discounted_price(10))

@@ -13,7 +13,7 @@
 
 class UserManager:
     def __init__(self) -> None:
-        self.usernames = []
+        self.usernames: list[str] = []
 
     def add_user(self, username: str) -> None:
         self.usernames.append(username)

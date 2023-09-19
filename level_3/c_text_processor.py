@@ -24,7 +24,10 @@ class TextProcessor:
 class AdvancedTextProcessor(TextProcessor):
     def summaryze(self) -> str:
         words = re.findall(r'\b\w+\b', self.text)
-        return super().summarize() + f', total number of words in the text: {len(words)}'
+        return '{text_length} {num_words}'.format(
+        text_length=super().summarize(),
+        num_words=f', total number of words in the text: {len(words)}'
+        )
 
 
 if __name__ == '__main__':
