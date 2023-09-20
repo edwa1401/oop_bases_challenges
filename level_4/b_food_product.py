@@ -11,23 +11,38 @@
     3. Создайте экземпляры каждого из двух классов и вызовите у них все доступные методы
 """
 from datetime import datetime
+import decimal
 
 
 class Product:
-    def __init__(self, title, quantity):
+    def __init__(self, title: str, quantity: decimal.Decimal) -> None:
         self.title = title
         self.quantity = quantity
 
-    def get_full_info(self):
+    def get_full_info(self) -> str:
         return f'Product {self.title}, {self.quantity} in stock.'
 
-    def is_available(self):
+    def is_available(self) -> bool:
         return self.quantity > 0
 
 
 class FoodProduct(Product):
-    pass  # код писать тут
-
+    def __init__(self, title: str, quantity: decimal.Decimal, expiration_date: datetime) -> None:
+        super().__init__(title, quantity)
+        self.expiration_date = expiration_date
+    
+    def get_full_info(self) -> str:
+        return f'Product {self.title}, {self.quantity} in stock, expiration date {self.expiration_date.strftime("%d/%m/%Y")}'
+    
+    def is_available(self) -> bool:
+        return super().is_available() and self.expiration_date > datetime.now()
+    
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    wood = Product(title='drova', quantity=0)
+    print(wood.get_full_info())
+    print(wood.is_available())
+
+    potatoes = FoodProduct(title='kartoshka', quantity=100.101, expiration_date=datetime(2023, 11, 30))
+    print(potatoes.get_full_info())
+    print(potatoes.is_available())
