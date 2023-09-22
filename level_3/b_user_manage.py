@@ -12,19 +12,53 @@
 
 
 class UserManager:
-    def __init__(self):
-        self.usernames = []
+    def __init__(self) -> None:
+        self.usernames: list[str] = []
 
-    def add_user(self, username):
+    def add_user(self, username: str) -> None:
         self.usernames.append(username)
 
-    def get_users(self):
+    def get_users(self) -> list[str]:
         return self.usernames
 
 
-# код писать тут
+class AdminManager(UserManager):
+    def ban_username(self, username: str) -> None:
+        try:
+            self.usernames.remove(username)
+        except ValueError:
+            print('Такого пользователя не существует')
+        
+
+class SuperAdminManager(AdminManager):
+    def ban_all_users(self) -> None:
+        self.usernames.clear()
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    users = UserManager()
+    users.add_user(username='first_user')
+    users.add_user(username='second_user')
+    print(users.get_users())
+
+    print('-----------------------------')
+    beatles = AdminManager()
+    beatles.add_user(username='John')
+    beatles.add_user(username='Paul')
+    beatles.add_user(username='George')
+    beatles.add_user(username='Ringo')
+    print(beatles.get_users())
+    beatles.ban_username(username='John')
+    print(beatles.get_users())
+    beatles.ban_username(username='Gimmy')
+    print('------------------------------')
+
+    reservoir_dogs = SuperAdminManager()
+    reservoir_dogs.add_user(username='mr White')
+    reservoir_dogs.add_user(username='mr Pink')
+    reservoir_dogs.add_user(username='mr Brown')
+    reservoir_dogs.ban_username(username='mr Brown')
+    print(reservoir_dogs.get_users())
+    reservoir_dogs.ban_all_users()
+    print(reservoir_dogs.get_users())
 

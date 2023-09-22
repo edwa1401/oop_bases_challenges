@@ -8,24 +8,42 @@
     4. Создать экземпляр класс CreditAccount и вызвать у него каждый из возможных методов.
 """
 
-# код писать тут
-
-
-class CreditAccount:
-    def __init__(self, owner_full_name: str, balance: float):
+class BankAccount:
+    def __init__(self, owner_full_name: str, balance: float) -> None:
         self.owner_full_name = owner_full_name
         self.balance = balance
 
-    def increase_balance(self, amount: float):
+    def increase_balance(self, amount: float) -> None:
         self.balance += amount
 
-    def decrease_balance(self, amount: float):
+    def decrease_balance(self, amount: float) -> None:
         self.balance -= amount
 
-    def is_eligible_for_credit(self):
+
+class CreditAccount(BankAccount):
+    def is_eligible_for_credit(self) -> bool:
         return self.balance > 1000
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    akakiy_bank_acc = BankAccount(owner_full_name='Akakiy Akakievich Akakiev', balance=1000.00)
+    akakiy_bank_acc.increase_balance(100)
+    akakiy_bank_acc.decrease_balance(50)
+    print('{name} - {balance}'.format(
+        name=akakiy_bank_acc.owner_full_name,
+        balance=akakiy_bank_acc.balance
+        ))
 
+    marfa_cred_acc = CreditAccount(owner_full_name='Marfa Ivanova', balance=900.00)
+
+    marfa_cred_acc.increase_balance(100.01)
+    print('If {name} account eligible for credit? - {status}'.format(
+        name=marfa_cred_acc.owner_full_name,
+        status=marfa_cred_acc.is_eligible_for_credit()
+        ))
+    
+    marfa_cred_acc.decrease_balance(1.00)
+    print('And if {name} account is eligible for credit now? - {status}'.format(
+    name=marfa_cred_acc.owner_full_name,
+    status=marfa_cred_acc.is_eligible_for_credit()
+    ))
