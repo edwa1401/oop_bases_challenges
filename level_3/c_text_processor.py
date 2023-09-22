@@ -22,7 +22,7 @@ class TextProcessor:
 
 
 class AdvancedTextProcessor(TextProcessor):
-    def summaryze(self) -> str:
+    def summarize(self) -> str:
         words = re.findall(r'\b\w+\b', self.text)
         return '{text_length} {num_words}'.format(
         text_length=super().summarize(),
@@ -39,6 +39,6 @@ if __name__ == '__main__':
     sentence_2 = 'five, six, seven.'
     second_text = AdvancedTextProcessor(text=sentence_2)
     print(second_text.to_upper())
-    print(second_text.summaryze())
+    print(second_text.summarize())
 
 
