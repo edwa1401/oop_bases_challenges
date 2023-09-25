@@ -13,12 +13,12 @@ class User:
         self.username = username
         self.email = email
 
-    def change_email(self, new_email) -> str:
+    def change_email(self, new_email: str) -> str:
         self.email = new_email
 
 
 class AdminUserMixin:
-    def change_email(self, new_email) -> None:
+    def change_email(self, new_email: str) -> None:
         raise SystemError('It is impossible to change the email address of the administrator')
 
 
