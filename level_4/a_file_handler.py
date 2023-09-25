@@ -27,7 +27,9 @@ class FileHandler:
 
 
 class JSONHandler(FileHandler):
-    def read(self) -> TypeAlias(dict[str, Any] | list[dict[str, Any]]):
+    Json: TypeAlias = dict[str, Any] | list[dict[str, Any]]
+
+    def read(self) -> Json:
         with open(self.filename, 'r') as file:
             return json.load(file)
 
