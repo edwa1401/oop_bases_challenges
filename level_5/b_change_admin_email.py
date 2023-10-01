@@ -13,9 +13,8 @@ class User:
         self.username = username
         self.email = email
 
-    def change_email(self, new_email: str) -> str:
+    def change_email(self, new_email: str) -> None:
         self.email = new_email
-
 
 class AdminUserMixin:
     def change_email(self, new_email: str) -> None:
@@ -23,7 +22,7 @@ class AdminUserMixin:
 
 
 class AdminUser(AdminUserMixin, User):
-    def change_user_info(self, user: User, new_username: str, new_email: str) -> str:
+    def change_user_info(self, user: User, new_username: str, new_email: str) -> None:
         user.username = new_username
         user.email = new_email
 
