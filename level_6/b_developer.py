@@ -9,7 +9,7 @@
 
 
 class Employee:
-    def __init__(self, name: str, surname: str, age: int, salary: float):
+    def __init__(self, name: str, surname: str, age: int, salary: float) -> None:
         self.name = name
         self.surname = surname
         self.age = age
@@ -20,24 +20,49 @@ class Employee:
 
 
 class ItDepartmentEmployee(Employee):
-    def __init__(self, name: str, surname: str, age: int, salary: float):
+    def __init__(self, name: str, surname: str, age: int, salary: float) -> None:
         super().__init__(name, surname, age, salary)
         self.salary *= 2
 
 
 class AdminMixin:
-    def increase_salary(self, employee: Employee, amount: float):
+    def increase_salary(self, employee: Employee, amount: float) -> None:
         employee.salary += amount
 
 
 class SuperAdminMixin(AdminMixin):
-    def decrease_salary(self, employee: Employee, amount: float):
+    def decrease_salary(self, employee: Employee, amount: float) -> None:
         employee.salary -= amount
 
 
-# код писать тут
+class Developer(ItDepartmentEmployee, SuperAdminMixin):
+    def __init__(self, name: str, surname: str, age: int, salary: float, programming_language: str) -> None:
+        super().__init__(name, surname, age, salary)
+        self.programming_language = programming_language
+
+    def get_info(self):
+        base_info = super().get_info()
+        return f'{base_info}, programming language is {self.programming_language}'
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    just_developer = Developer(
+        name='Guido',
+        surname='van Rossum',
+        age=67,
+        salary=1000000.01,
+        programming_language='Python')
+    
+print(just_developer.get_info())
+
+just_developer.increase_salary(just_developer, amount=1000000.00)
+
+print(just_developer.get_info())
+
+just_developer.decrease_salary(just_developer, amount=500000.00)
+
+print(just_developer.get_info())
+
+
+
 
