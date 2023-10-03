@@ -16,6 +16,7 @@ import csv
 import json
 from typing import Any, TypeAlias
 
+Json: TypeAlias = dict[str, Any] | list[dict[str, Any]]
 
 class FileHandler:
     def __init__(self, filename: str) -> None:
@@ -25,9 +26,9 @@ class FileHandler:
         with open(self.filename, 'r') as file:
             return file.read()
 
-
 class JSONHandler(FileHandler):
-    def read(self) -> TypeAlias(dict[str, Any] | list[dict[str, Any]]):
+
+    def read(self) -> Json:
         with open(self.filename, 'r') as file:
             return json.load(file)
 
