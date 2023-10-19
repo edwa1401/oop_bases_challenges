@@ -9,7 +9,17 @@
     3. Создайте экземпляр класса AuthorizationForm и вызовите у него метод valid_form. Должны отрабатывать обе проверки:
        и на длину пароля и на наличия юзернэйма в базе
 """
+from typing import Protocol
+
 USERNAMES_IN_DB = ['Alice_2023', 'BobTheBuilder', 'CrazyCoder', 'DataDiva', 'EpicGamer', 'JavaJunkie']
+
+class FormStructure(Protocol):
+    username: str
+    password: str
+
+
+    def valid_form(self) -> bool:
+        ''' add validation method'''
 
 
 class Form:
@@ -22,7 +32,7 @@ class Form:
 
 
 class AuthorizationFormMixin:
-    def valid_form(self) -> bool:
+    def valid_form(self: FormStructure) -> bool:
         return super().valid_form() and self.username in USERNAMES_IN_DB
     
 

@@ -10,6 +10,15 @@
     3. Создать экземпляр класс FoodProduct с ценой больше 10 и вызвать у него метод get_product_info.
 """
 
+from typing import Protocol
+
+class ProductForm(Protocol):
+    title: str
+    price: float
+
+    def get_product_info(self) -> str:
+        ''' add metrhod'''
+
 
 class Product:
     def __init__(self, title: str, price: float) -> None:
@@ -21,7 +30,7 @@ class Product:
 
 
 class FoodProductMixin:
-    def is_premium_food(self) -> bool:
+    def is_premium_food(self: ProductForm) -> bool:
         return self.price > 10
 
 

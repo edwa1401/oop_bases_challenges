@@ -14,13 +14,21 @@ EBAY_TITLE = 'eBay'
 class BankAccount:
     min_balance = -100
 
-    def __init__(self, owner: str, balance: float):
+    def __init__(self, owner: str, balance: float) -> None:
         self.owner = owner
         self.balance = balance
 
     def decrease_balance(self, amount: float):
-        pass  # писать код тут
+        self.balance -= amount
+        if self.balance < self.min_balance:
+            self.balance += amount
+            raise ValueError('balance is less then -100')
+        return self.balance
 
-
+        
 if __name__ == '__main__':
-    pass  # писать код тут
+    my_account = BankAccount(owner='me', balance=0.00)
+    print(my_account.decrease_balance(50))
+    print(my_account.decrease_balance(50.01))
+
+
