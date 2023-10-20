@@ -6,17 +6,7 @@
     2. Найдите причину этой досадной оплошности и исправьте. Код в методах менять нельзя
     3. Снова запустите код и убедитесь, что при попытке сменить емэил у админа вы видите ошибку
 """
-from abc import abstractmethod
-from typing import Protocol
 from typing import Any
-
-class UserForm(Protocol):
-    username: str
-    email: str
-
-    @abstractmethod
-    def change_email(self, new_email: str) -> Any:
-        ''' add method'''
 
 
 class User:
@@ -28,7 +18,7 @@ class User:
         self.email = new_email
 
 class AdminUserMixin:
-    def change_email(self: UserForm, new_email: str) -> None:
+    def change_email(self, new_email: str) -> None:
 
         raise SystemError('It is impossible to change the email address of the administrator')
 

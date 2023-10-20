@@ -12,12 +12,8 @@
 
 from typing import Protocol
 
-class ProductForm(Protocol):
-    title: str
+class HasPrice(Protocol):
     price: float
-
-    def get_product_info(self) -> str:
-        ''' add metrhod'''
 
 
 class Product:
@@ -30,7 +26,7 @@ class Product:
 
 
 class FoodProductMixin:
-    def is_premium_food(self: ProductForm) -> bool:
+    def is_premium_food(self: HasPrice) -> bool:
         return self.price > 10
 
 

@@ -10,14 +10,14 @@
 
 
 class EbayProduct:
-    EBAY_TITLE = 'eBay'
+    MarketPlaceTitle = 'eBay'
 
     def __init__(self, title: str, price: float) -> None:
         self.title = title
         self.price = price
 
     def get_product_info(self) -> str:
-        return f'Product {self.title} with price {self.price} from {self.EBAY_TITLE} marketplace'
+        return f'Product {self.title} with price {self.price} from {self.MarketPlaceTitle} marketplace'
 
 
 if __name__ == '__main__':

@@ -13,10 +13,8 @@ from typing import Protocol
 
 USERNAMES_IN_DB = ['Alice_2023', 'BobTheBuilder', 'CrazyCoder', 'DataDiva', 'EpicGamer', 'JavaJunkie']
 
-class FormStructure(Protocol):
+class HasUserName(Protocol):
     username: str
-    password: str
-
 
     def valid_form(self) -> bool:
         ''' add validation method'''
@@ -32,8 +30,8 @@ class Form:
 
 
 class AuthorizationFormMixin:
-    def valid_form(self: FormStructure) -> bool:
-        return super().valid_form() and self.username in USERNAMES_IN_DB
+    def valid_form(self: HasUserName) -> bool:
+        return super().valid_form() and self.username in USERNAMES_IN_DB # type: ignore[misc]
     
 
 class AuthorizationForm(AuthorizationFormMixin, Form):
