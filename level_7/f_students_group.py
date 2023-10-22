@@ -9,13 +9,14 @@
     3. Запустите текущий код и убедитесь, что теперь мы получаем число в выводе, вместо ошибки.
 """
 
+from typing import Self
 
 class StudentGroup:
     def __init__(self, group_number: int, grades: list[int]) -> None:
         self.group_number = group_number
         self.grades = grades
 
-    def __add__(self, other: "StudentGroup") -> int:
+    def __add__(self, other: Self) -> int:
         return sum(self.grades) + sum(other.grades)
 
 if __name__ == '__main__':

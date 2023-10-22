@@ -57,11 +57,11 @@ if __name__ == '__main__':
 
     just_developer.increase_salary(just_developer, amount=1000000.00)
 
-print(just_developer.get_info())
+    print(just_developer.get_info())
 
-just_developer.decrease_salary(just_developer, amount=500000.00)
+    just_developer.decrease_salary(just_developer, amount=500000.00)
 
-print(just_developer.get_info())
+    print(just_developer.get_info())
 
 
 
