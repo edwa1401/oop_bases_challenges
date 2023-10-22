@@ -53,9 +53,9 @@ if __name__ == '__main__':
         salary=1000000.01,
         programming_language='Python')
     
-print(just_developer.get_info())
+    print(just_developer.get_info())
 
-just_developer.increase_salary(just_developer, amount=1000000.00)
+    just_developer.increase_salary(just_developer, amount=1000000.00)
 
 print(just_developer.get_info())
 

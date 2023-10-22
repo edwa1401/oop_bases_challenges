@@ -30,23 +30,23 @@ class PremiumProduct(PrintLoggerMixin, Product):
 
     def increase_price(self) -> None:
         self.price *= 1.2
-        super().log(self.price)
+        self.log(self.price)
 
     def get_info(self) -> str:
         base_info = super().get_info()
         message = f'{base_info} (Premium)'
-        super().log(message=message)
+        self.log(message=message)
         return message
 
 class DiscountedProduct(PrintLoggerMixin, Product):
     def increase_price(self) -> None:
         self.price /= 1.2
-        super().log(self.price)
+        self.log(self.price)
 
     def get_info(self) -> str:
         base_info = super().get_info()
         message = f'{base_info} (Discounted)'
-        super().log(message=message)
+        self.log(message=message)
         return message
 
 

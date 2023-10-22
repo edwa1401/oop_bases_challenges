@@ -15,7 +15,7 @@ class StudentGroup:
         self.group_number = group_number
         self.grades = grades
 
-    def __add__(self, other) -> int:
+    def __add__(self, other: "StudentGroup") -> int:
         return sum(self.grades) + sum(other.grades)
 
 if __name__ == '__main__':
