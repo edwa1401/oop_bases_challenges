@@ -22,12 +22,12 @@ class BankAccount:
         control_balance_amount = self.balance - amount
         if control_balance_amount < self.min_balance:
             raise ValueError('balance is less then -100')
-        self.balance -= amount
+        self.balance = control_balance_amount
 
 if __name__ == '__main__':
     my_account = BankAccount(owner='me', balance=0.00)
     my_account.decrease_balance(50)
     print(my_account.balance)
-    print(my_account.decrease_balance(50.01))
+    my_account.decrease_balance(50.01)
 
 

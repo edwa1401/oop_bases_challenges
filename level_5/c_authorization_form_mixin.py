@@ -16,9 +16,6 @@ USERNAMES_IN_DB = ['Alice_2023', 'BobTheBuilder', 'CrazyCoder', 'DataDiva', 'Epi
 class HasUserName(Protocol):
     username: str
 
-    def valid_form(self) -> bool:
-        ''' add validation method'''
-
 
 class Form:
     def __init__(self, username: str, password: str) -> None:
